@@ -10,6 +10,16 @@ DestinationsList.prototype.assignId = function (destination) {
   this.currentId += 1;
   return this.currentId;
 }
+DestinationsList.prototype.findPlace = function(id) {
+  for (var i = 0; i < this.destinations.length; i ++) {
+    if (this.destinations[i]) {
+      if (this.destinations[i].id == id) {
+        return this.destinations[i];
+      }
+    }
+  };
+  return false;
+}
 function Destination (place, activity, season) {
   this.place = place;
   this.activity = activity;
@@ -27,6 +37,7 @@ var resetForm = function(){
   var inputSeason = $("input#destinationSeason").val("");
 }
 function displayDestinations(destinationsListToDisplay) {
+  $("div#show-instructions").show();
   var placeListDisplay = $("ul#placeList");
   var htmlForPlaceList = "";
   destinationsListToDisplay.destinations.forEach(function(destination){
@@ -34,25 +45,29 @@ function displayDestinations(destinationsListToDisplay) {
   });
   placeListDisplay.html(htmlForPlaceList);
 }
+function showDetails(id) {
+  var destination = destinationsList.findPlace(id);
+  $("div#show-details").show();
+  $("span.place").html(destination.place);
+  $("span.activity").html(destination.activity);
+  $("span.season").html(destination.season);
+  var buttons = $("div#buttons");
+  buttons.empty();
+  buttons.append("<button class='hideDetails'>X</button>")
+}
 
-// function displayDestinationDetails(destinationsListToDisplay){
-//   var destinationsListDisplay = $("ul#destinationsList");
-//   var htmlForDestinationDetail = "";
-//   destinationsListToDisplay.destinations.forEach(function(destination) {
-//       var destintationDetailsSentence = destination.placeInfo(destination);
-//       htmlForDestinationDetail += "<li id=" + destination.id + ">" + destintationDetailsSentence + "</li>";
-//     });
-//     destinationsListDisplay.html(htmlForDestinationDetail);
-// }
+function attachPlaceListeners(){
+  $("ul#placeList").on("click", "li", function(){
+    showDetails(this.id);
+  });
+  $("div#buttons").on("click", ".hideDetails", function(){
+    $("div#show-details").hide();
+  });
+}
 
 
 $(document).ready(function(){
-
-  $("li").click(function(){
-    alert("clicked");
-  });
-
-  
+    attachPlaceListeners();
     $("form#addDestination").submit(function(event){
       event.preventDefault();
       var inputPlace = $("input#destinationPlace").val();

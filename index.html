@@ -12,26 +12,43 @@
   <body>
     <div class="container">
       <h1>Places You've Been</h1>
-      <ul id="placeList">
+      <div class="row">
+        <div class="col-md-6">
+          <form id="addDestination">
+            <h5>Add a place:</h5>
+            <div class="form-group">
+              <label for="destinationPlace">Place</label>
+              <input type="text" class="form-control" id="destinationPlace">
+            </div>
+            <div class="form-group">
+              <label for="destinationActivity">Activity</label>
+              <input type="text" class="form-control" id="destinationActivity">
+            </div>
+            <div class="form-group">
+              <label for="destinationSeason">Season</label>
+              <input type="text" class="form-control" id="destinationSeason">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <hr>
+          <ul id="placeList">
 
-      </ul>
+          </ul>
+          <div id="show-instructions">
+            <p>Click on place name to show details.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div id="show-details">
+              <p>Place: <span class="place"></span> </p>
+              <p>Activity: <span class="activity"></span> </p>
+              <p>Season: <span class="season"></span> </p>
+              <div id="buttons">
 
-      <form id="addDestination">
-        <h2>Add a place:</h2>
-        <div class="form-group">
-          <label for="destinationPlace">Place</label>
-          <input type="text" class="form-control" id="destinationPlace">
+              </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="destinationActivity">Activity</label>
-          <input type="text" class="form-control" id="destinationActivity">
-        </div>
-        <div class="form-group">
-          <label for="destinationSeason">Season</label>
-          <input type="text" class="form-control" id="destinationSeason">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+      </div>
     </div>
   </body>
 </html>

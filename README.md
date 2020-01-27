@@ -4,12 +4,19 @@
 <br>
 
 ## Description
-Website that displays a list of places with details on what was done there
+Website that keeps track of all the places you've been. Each destination is an object with multiple properties, like location, activities, time of year to visit or do activities. Places displayed as user enters, properties displayed when a user clicks on a place's name.
 
+eg:
+
+user input: place, activity and season.
+output: place name listed, with instructions to click on place to show details.
+
+user input: clicks on place name in main ul list.
+output: place details listed to left with close x to hide details
 <br>
 
 ## Objectives
-- [ ] Complete above Description
+- [ x ] Complete above Description
 
 <br>
 
